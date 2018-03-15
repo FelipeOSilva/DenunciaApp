@@ -76,6 +76,14 @@
   version "4.5.3"
   resolved "https://registry.yarnpkg.com/@ionic-native/core/-/core-4.5.3.tgz#bd0fd39e7257ded4c55c3062bb73c9741a2263bc"
 
+"@ionic-native/file-transfer@^4.5.3":
+  version "4.5.3"
+  resolved "https://registry.yarnpkg.com/@ionic-native/file-transfer/-/file-transfer-4.5.3.tgz#0a455974dcb3bea8fa86ef6677bb0b4e5dbc5ed6"
+
+"@ionic-native/file@^4.5.3":
+  version "4.5.3"
+  resolved "https://registry.yarnpkg.com/@ionic-native/file/-/file-4.5.3.tgz#a8af6b56a8ee4bcfdb241ff24b20a9eedb5230ef"
+
 "@ionic-native/splash-screen@4.5.3":
   version "4.5.3"
   resolved "https://registry.yarnpkg.com/@ionic-native/splash-screen/-/splash-screen-4.5.3.tgz#1f76d947091f4a8aa50963fd692f633738ac79d9"
@@ -872,6 +880,14 @@ cordova-plugin-camera@^4.0.2:
 cordova-plugin-device@^2.0.1:
   version "2.0.1"
   resolved "https://registry.yarnpkg.com/cordova-plugin-device/-/cordova-plugin-device-2.0.1.tgz#9b9e2313e682119ff8402f68096a38bcc5013593"
+
+cordova-plugin-file-transfer@^1.7.1:
+  version "1.7.1"
+  resolved "https://registry.yarnpkg.com/cordova-plugin-file-transfer/-/cordova-plugin-file-transfer-1.7.1.tgz#a75d8be2ebc3bb9b23c5b1bbd199214ec267586b"
+
+cordova-plugin-file@^6.0.1:
+  version "6.0.1"
+  resolved "https://registry.yarnpkg.com/cordova-plugin-file/-/cordova-plugin-file-6.0.1.tgz#49606b8c15a5688d4728f92e4a7325a061de07f5"
 
 cordova-plugin-ionic-keyboard@^2.0.5:
   version "2.0.5"
