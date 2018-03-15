@@ -20,4 +20,7 @@ export class DenunciaService {
         });
     });
   }
+  getEmail() {
+    return this.email;
+  }
 }

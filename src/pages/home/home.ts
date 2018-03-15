@@ -1,8 +1,9 @@
 import { ShowLoadingService } from './../../providers/show-loading/show-loading.service';
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, IonicPage } from 'ionic-angular';
 import { DenunciaService } from '../../providers/denuncia/denuncia.service';
 
+@IonicPage()
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
@@ -31,6 +32,6 @@ export class HomePage {
 
   //Função que irá abrir a página de cadastro de notícias
   openCadastroDenuncias() {
-    //Aqui abrirá a nova página
+    this.navCtrl.push('CadastroDenunciasPage')
   }
 }

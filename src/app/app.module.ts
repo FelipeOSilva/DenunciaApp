@@ -5,8 +5,10 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 
 import { MyApp } from './app.component';
-import { HomePage } from '../pages/home/home';
 
+import { Camera } from '@ionic-native/camera';
+import { File } from '@ionic-native/file';
+import { FileTransfer } from '@ionic-native/file-transfer';
 import { HttpClientModule } from '@angular/common/http';
 
 import { DenunciaService } from '../providers/denuncia/denuncia.service';
@@ -15,7 +17,6 @@ import { ShowLoadingService } from '../providers/show-loading/show-loading.servi
 @NgModule({
   declarations: [
     MyApp,
-    HomePage
   ],
   imports: [
     BrowserModule,
@@ -25,15 +26,16 @@ import { ShowLoadingService } from '../providers/show-loading/show-loading.servi
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    HomePage
   ],
   providers: [
-
+    Camera,
+    File,
+    FileTransfer,
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    { provide: ErrorHandler, useClass: IonicErrorHandler },
     DenunciaService,
     ShowLoadingService
   ]
 })
-export class AppModule {}
+export class AppModule { }

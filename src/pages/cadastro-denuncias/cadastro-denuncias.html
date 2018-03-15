@@ -1,0 +1,33 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Cadastro de Denúncias</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content padding>
+  <form [formGroup]="denunciaForm" (ngSubmit)="addDenuncia(); $event.preventDefault()">
+    <ion-item>
+      <ion-label floating>
+        Lista de Motivos:
+      </ion-label>
+      <ion-select [(ngModel)]="denuncia.motivo_ocorrencia" formControlName="motivoDenuncia">
+        <ion-option *ngFor="let motivo of motivos" value={{motivo}}>{{motivo}}</ion-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label stacked>
+        Email:
+      </ion-label>
+      <ion-input type="text" [(ngModel)]="denuncia.email" formControlName="emailDenuncia" disabled></ion-input>
+    </ion-item>
+    <ion-label text-center>Clique para tirar uma foto</ion-label>
+    <ion-input type="text" hidden [value]="denuncia.imagem" formControlName="imagemDenuncia">
+    </ion-input>
+    <img class="img-photo" src="{{denuncia.imagem}}" *ngIf="denuncia.imagem" (click)="getImagem()">
+    <img class="img-photo" src="assets/imgs/no_image.png" *ngIf="!denuncia.imagem" (click)="getImagem()">
+
+    <button ion-button block [disabled]="denunciaForm.invalid">Salvar dados</button>
+  </form>
+</ion-content>
