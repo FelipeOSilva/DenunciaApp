@@ -7,6 +7,11 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 
+import { HttpClientModule } from '@angular/common/http';
+
+import { DenunciaService } from '../providers/denuncia/denuncia.service';
+import { ShowLoadingService } from '../providers/show-loading/show-loading.service';
+
 @NgModule({
   declarations: [
     MyApp,
@@ -14,6 +19,7 @@ import { HomePage } from '../pages/home/home';
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     IonicModule.forRoot(MyApp)
   ],
   bootstrap: [IonicApp],
@@ -22,9 +28,12 @@ import { HomePage } from '../pages/home/home';
     HomePage
   ],
   providers: [
+
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    DenunciaService,
+    ShowLoadingService
   ]
 })
 export class AppModule {}

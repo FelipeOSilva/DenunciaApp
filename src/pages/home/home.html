@@ -1,14 +1,31 @@
 <ion-header>
+
   <ion-navbar>
-    <ion-title>
-      Ionic Blank
-    </ion-title>
+    <ion-title>Lista de Denúncias</ion-title>
   </ion-navbar>
+
 </ion-header>
 
 <ion-content padding>
-  The world is your oyster.
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
-  </p>
+  <ion-list>
+    <ion-item *ngIf="!denuncias; else denunciaList">
+      <ion-label text-center>Você não tem ocorrencias registradas</ion-label>
+    </ion-item>
+
+    <ng-template #denunciaList>
+      <ion-item *ngFor="let denuncia of denuncias">
+        <ion-avatar item-left>
+          <img src={{denuncia.imagem}}>
+        </ion-avatar>
+        <h2>{{denuncia.email}}</h2>
+        <p>{{denuncia.motivo_ocorrencia}}</p>
+      </ion-item>
+    </ng-template>
+
+  </ion-list>
+  <ion-fab right bottom>
+    <button ion-fab (click)="openCadastroDenuncias()">
+      <ion-icon name="md-create"></ion-icon>
+    </button>
+  </ion-fab>
 </ion-content>
