@@ -1,3 +1,4 @@
+import { ShowToastService } from './../../providers/show-toast/show-toast.service';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { AlertController } from 'ionic-angular/components/alert/alert-controller';
@@ -5,6 +6,7 @@ import { AlertController } from 'ionic-angular/components/alert/alert-controller
 import { DenunciaService } from '../../providers/denuncia/denuncia.service';
 import { Camera, CameraOptions } from '@ionic-native/camera';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { ShowLoadingService } from '../../providers/show-loading/show-loading.service';
 
 @IonicPage()
 @Component({
@@ -23,12 +25,14 @@ export class CadastroDenunciasPage {
   public denunciaForm: FormGroup;
 
   constructor(
-    public alertCtrl: AlertController,
-    public camera: Camera,
-    public denunciaService: DenunciaService,
-    public formBuilder: FormBuilder,
-    public navCtrl: NavController,
-    public navParams: NavParams
+    private alertCtrl: AlertController,
+    private camera: Camera,
+    private denunciaService: DenunciaService,
+    private formBuilder: FormBuilder,
+    private navCtrl: NavController,
+    private navParams: NavParams,
+    private showLoadingService: ShowLoadingService,
+    private showToastService: ShowToastService
   ) {
     this.denuncia.email = denunciaService.getEmail();
     this.denunciaForm = this.formBuilder.group({
@@ -51,12 +55,33 @@ export class CadastroDenunciasPage {
         //substituindo a imagem padrão pela a tirada
         this.denuncia.imagem = data;
       })
-      .catch(err => console.log('err,', err))
+      .catch(_ => this.showToastService.showToast('Erro ao abrir o aplicativo da câmera, favor verificar permissões'))
   }
 
-  addDenuncia() {
-    //função que irar adicionar uma nova denuncia
-    this.showAlert();
+  //Função que irar adicionar uma nova denuncia
+  addDenuncia(denuncia) {
+    let loading = this.showLoadingService.showLoading("Cadastrando sua denúncia")
+    this.denunciaService.addDenuncia(denuncia)
+      .then(_ => {
+        loading.dismiss();
+        this.showAlert();
+      })
+      .catch(err => {
+        loading.dismiss();
+        switch (err.code) {
+          case 1:
+            this.showToastService.showToast("Arquivo não encontrado, por favor tente novamente");
+            break;
+          case 3:
+            this.showToastService.showToast("Favor verifique sua conexão com a internet e tente novamente");
+            break;
+          case 4:
+            this.showToastService.showToast("Envio cancelado");
+            break;
+          default:
+            this.showToastService.showToast("Erro ao cadastrar denúncia, por favor tente mais tarde");
+        }
+      })
   }
 
   //Função para exibir mensagem de sucesso e retornar para pagina inicial

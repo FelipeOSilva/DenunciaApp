@@ -13,6 +13,7 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { DenunciaService } from '../providers/denuncia/denuncia.service';
 import { ShowLoadingService } from '../providers/show-loading/show-loading.service';
+import { ShowToastService } from '../providers/show-toast/show-toast.service';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { ShowLoadingService } from '../providers/show-loading/show-loading.servi
     SplashScreen,
     { provide: ErrorHandler, useClass: IonicErrorHandler },
     DenunciaService,
-    ShowLoadingService
+    ShowLoadingService,
+    ShowToastService
   ]
 })
 export class AppModule { }

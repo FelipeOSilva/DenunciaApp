@@ -7,7 +7,7 @@
 </ion-header>
 
 <ion-content padding>
-  <form [formGroup]="denunciaForm" (ngSubmit)="addDenuncia(); $event.preventDefault()">
+  <form [formGroup]="denunciaForm" (ngSubmit)="addDenuncia(denuncia); $event.preventDefault()">
     <ion-item>
       <ion-label floating>
         Lista de Motivos:

@@ -5,10 +5,8 @@ import { LoadingController } from 'ionic-angular/components/loading/loading-cont
 export class ShowLoadingService {
 
   constructor(
-    public loadingCtrl: LoadingController
-  ) {
-    console.log('Hello ShowLoadingProvider Provider');
-  }
+    private loadingCtrl: LoadingController
+  ) { }
 
   //Função para exibir mensagem de "carregamento"
   public showLoading(message?) {
