@@ -55,7 +55,7 @@ export class CadastroDenunciasPage {
         //substituindo a imagem padrão pela a tirada
         this.denuncia.imagem = data;
       })
-      .catch(_ => this.showToastService.showToast('Erro ao abrir o aplicativo da câmera, favor verificar permissões'))
+      .catch(_ => this.showToastService.showToast('Imagem não registrada'))
   }
 
   //Função que irar adicionar uma nova denuncia
