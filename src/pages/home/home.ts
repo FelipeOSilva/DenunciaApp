@@ -10,7 +10,7 @@ import { DenunciaService } from '../../providers/denuncia/denuncia.service';
   templateUrl: 'home.html'
 })
 export class HomePage {
-  public denuncias;
+  public denuncias = [];
   constructor(
     private denunciaService: DenunciaService,
     private navCtrl: NavController,
@@ -28,7 +28,7 @@ export class HomePage {
   getDenuncias() {
     let loading = this.showLoadingService.showLoading('Carregando suas denúncias');
     this.denunciaService.getDenuncias()
-      .then(data => this.denuncias = data)
+      .then((data: [{}]) => { console.log(data); this.denuncias = data; })
       .then(_ => loading.dismiss())
       .catch(_ => {
         loading.dismiss();

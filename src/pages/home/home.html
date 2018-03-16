@@ -8,7 +8,7 @@
 
 <ion-content padding>
   <ion-list>
-    <ion-item *ngIf="!denuncias; else denunciaList">
+    <ion-item *ngIf="denuncias && denuncias.length == 0; else denunciaList">
       <ion-label text-center>Não foram localizadas ocorrências</ion-label>
     </ion-item>
 
@@ -20,6 +20,7 @@
         <h2>{{denuncia.email}}</h2>
         <p>{{denuncia.motivo_ocorrencia}}</p>
       </ion-item>
+
     </ng-template>
 
   </ion-list>

@@ -1,6 +1,6 @@
 import { ShowToastService } from './../../providers/show-toast/show-toast.service';
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController } from 'ionic-angular';
 import { AlertController } from 'ionic-angular/components/alert/alert-controller';
 
 import { DenunciaService } from '../../providers/denuncia/denuncia.service';
@@ -30,7 +30,6 @@ export class CadastroDenunciasPage {
     private denunciaService: DenunciaService,
     private formBuilder: FormBuilder,
     private navCtrl: NavController,
-    private navParams: NavParams,
     private showLoadingService: ShowLoadingService,
     private showToastService: ShowToastService
   ) {

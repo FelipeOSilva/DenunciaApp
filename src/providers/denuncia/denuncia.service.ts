@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { FileTransfer, FileUploadOptions, FileTransferObject, FileTransferError } from '@ionic-native/file-transfer';
+import { FileTransfer, FileUploadOptions, FileTransferObject } from '@ionic-native/file-transfer';
 import { HttpClient } from '@angular/common/http';
 
 @Injectable()
