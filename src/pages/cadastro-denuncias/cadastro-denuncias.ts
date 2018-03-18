@@ -1,5 +1,5 @@
 import { ShowToastService } from './../../providers/show-toast/show-toast.service';
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { IonicPage, NavController } from 'ionic-angular';
 import { AlertController } from 'ionic-angular/components/alert/alert-controller';
 
@@ -8,6 +8,8 @@ import { Camera, CameraOptions } from '@ionic-native/camera';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ShowLoadingService } from '../../providers/show-loading/show-loading.service';
 import { SqliteHelperService } from '../../providers/sqlite-helper/sqlite-helper.service';
+import { Select } from 'ionic-angular/components/select/select';
+import { ModalController } from 'ionic-angular/components/modal/modal-controller';
 
 @IonicPage()
 @Component({
@@ -15,6 +17,7 @@ import { SqliteHelperService } from '../../providers/sqlite-helper/sqlite-helper
   templateUrl: 'cadastro-denuncias.html',
 })
 export class CadastroDenunciasPage {
+  @ViewChild('selectMotivo') selectMotivo: Select;
 
   public denuncia = {
     email: '',
@@ -30,6 +33,7 @@ export class CadastroDenunciasPage {
     private camera: Camera,
     private denunciaService: DenunciaService,
     private formBuilder: FormBuilder,
+    public modalCtrl: ModalController,
     private sqliteHelperService: SqliteHelperService,
     private navCtrl: NavController,
     private showLoadingService: ShowLoadingService,
@@ -94,6 +98,22 @@ export class CadastroDenunciasPage {
       })
   }
 
+  onModalAddMotivo() {
+    this.denuncia.motivo_ocorrencia = "";
+    this.selectMotivo.close();
+    console.log('Modal Add Motivo Page')
+    let modal = this.modalCtrl.create('ModalAddMotivoPage');
+
+    modal.onDidDismiss(() => {
+      this.sqliteHelperService.getAll('MOTIVO_OCORRENCIAS')
+        .then((list: object[]) => {
+          this.motivos = [];
+          this.motivos = list;
+          console.log(this.motivos)
+        })
+    })
+    modal.present();
+  }
   //Função para exibir mensagem de sucesso e retornar para pagina inicial
   showAlert() {
     console.log(this.denuncia)
