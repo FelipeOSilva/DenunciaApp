@@ -10,10 +10,12 @@ import { Camera } from '@ionic-native/camera';
 import { File } from '@ionic-native/file';
 import { FileTransfer } from '@ionic-native/file-transfer';
 import { HttpClientModule } from '@angular/common/http';
+import { SQLite } from '@ionic-native/sqlite';
 
 import { DenunciaService } from '../providers/denuncia/denuncia.service';
 import { ShowLoadingService } from '../providers/show-loading/show-loading.service';
 import { ShowToastService } from '../providers/show-toast/show-toast.service';
+import { SqliteHelperService } from './../providers/sqlite-helper/sqlite-helper.service';
 
 @NgModule({
   declarations: [
@@ -37,7 +39,9 @@ import { ShowToastService } from '../providers/show-toast/show-toast.service';
     { provide: ErrorHandler, useClass: IonicErrorHandler },
     DenunciaService,
     ShowLoadingService,
-    ShowToastService
+    ShowToastService,
+    SQLite,
+    SqliteHelperService
   ]
 })
 export class AppModule { }
