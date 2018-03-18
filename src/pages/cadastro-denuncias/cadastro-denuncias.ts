@@ -7,6 +7,7 @@ import { DenunciaService } from '../../providers/denuncia/denuncia.service';
 import { Camera, CameraOptions } from '@ionic-native/camera';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ShowLoadingService } from '../../providers/show-loading/show-loading.service';
+import { SqliteHelperService } from '../../providers/sqlite-helper/sqlite-helper.service';
 
 @IonicPage()
 @Component({
@@ -20,7 +21,7 @@ export class CadastroDenunciasPage {
     motivo_ocorrencia: '',
     imagem: ''
   };
-  public motivos = ['ROUBO', 'FURTO'];
+  public motivos: object[];
 
   public denunciaForm: FormGroup;
 
@@ -29,6 +30,7 @@ export class CadastroDenunciasPage {
     private camera: Camera,
     private denunciaService: DenunciaService,
     private formBuilder: FormBuilder,
+    private sqliteHelperService: SqliteHelperService,
     private navCtrl: NavController,
     private showLoadingService: ShowLoadingService,
     private showToastService: ShowToastService
@@ -39,6 +41,15 @@ export class CadastroDenunciasPage {
       emailDenuncia: ['', [Validators.required]],
       imagemDenuncia: ['', [Validators.required]],
     });
+  }
+
+  ionViewWillLoad() {
+    //Capturando todos os motivos de ocorrencias cadastradas no banco de dados.
+    this.sqliteHelperService.getAll('MOTIVO_OCORRENCIAS')
+      .then((list: object[]) => {
+        this.motivos = list;
+        console.log(this.motivos)
+      })
   }
   //Função que abre a camera e substitui a imagem padrão, pela foto tirada
   getImagem() {

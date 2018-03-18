@@ -51,7 +51,7 @@ export class InitAppService {
           this.sqliteHelperService.onInsert('MOTIVO_OCORRENCIAS', [null, 'FURTO']);
           this.sqliteHelperService.onInsert('MOTIVO_OCORRENCIAS', [null, 'ROUBO']);
 
-          console.log("Dias inseridos com sucesso")
+          console.log("Motivos inseridos com sucesso")
         }
         else {
           console.log("Registrado");

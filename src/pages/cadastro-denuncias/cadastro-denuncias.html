@@ -13,7 +13,7 @@
         Lista de Motivos:
       </ion-label>
       <ion-select [(ngModel)]="denuncia.motivo_ocorrencia" formControlName="motivoDenuncia">
-        <ion-option *ngFor="let motivo of motivos" value={{motivo}}>{{motivo}}</ion-option>
+        <ion-option *ngFor="let motivo of motivos" [value]="motivo.nome">{{motivo.nome}}</ion-option>
       </ion-select>
     </ion-item>
     <ion-item>
