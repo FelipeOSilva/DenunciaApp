@@ -13,6 +13,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { SQLite } from '@ionic-native/sqlite';
 
 import { DenunciaService } from '../providers/denuncia/denuncia.service';
+import { InitAppService } from '../providers/init-app-service/init-app-service';
 import { ShowLoadingService } from '../providers/show-loading/show-loading.service';
 import { ShowToastService } from '../providers/show-toast/show-toast.service';
 import { SqliteHelperService } from './../providers/sqlite-helper/sqlite-helper.service';
@@ -37,6 +38,7 @@ import { SqliteHelperService } from './../providers/sqlite-helper/sqlite-helper.
     StatusBar,
     SplashScreen,
     { provide: ErrorHandler, useClass: IonicErrorHandler },
+    InitAppService,
     DenunciaService,
     ShowLoadingService,
     ShowToastService,
